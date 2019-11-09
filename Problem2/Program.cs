@@ -12,35 +12,33 @@ namespace Problem2
         {
             int[] inputArray = new int[] { 1, 2, 3, 4, 5, 6 };
             Console.WriteLine("The old array is");
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-               Console.WriteLine(inputArray[i]);
-            }
+            PrintArray(inputArray);
             Console.WriteLine("Enter the index");
-
-            
-            if (int.TryParse(Console.ReadLine(),out int result) && result >=0 && result <inputArray.Length ) 
+            if (int.TryParse(Console.ReadLine(), out int result) && result >= 0 && result < inputArray.Length)
             {
                 int targetIndex = result;
-
-                deleteMember(ref inputArray, targetIndex);
+                DeleteMember(ref inputArray, targetIndex);
                 Console.WriteLine("New Array is ");
-                for (int i = 0; i < inputArray.Length; i++)
-                {
-                    Console.WriteLine(inputArray[i]);
-                }
-
+                PrintArray(inputArray);
             }
             else
             {
                 Console.WriteLine("You've entered wrong symbol");
-            } 
-            
+            }
+
             Console.ReadKey();
         }
 
-       
-        static  void deleteMember(ref int[] inputArray,int targetIndex)
+        static void PrintArray(int [] inputArray)
+        {
+            int length = inputArray.Length;
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                Console.WriteLine(inputArray[i]);
+            }
+
+        }
+        static  void DeleteMember(ref int[] inputArray,int targetIndex)
         {
             int[] newArray = new int[inputArray.Length - 1];
             int indexofNewArr = 0;
@@ -53,12 +51,9 @@ namespace Problem2
                 }              
             }
 
-            inputArray = new int[newArray.Length];
+            inputArray = newArray;
 
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                inputArray[i] = newArray[i];
-            }         
+              
             
         }
 
